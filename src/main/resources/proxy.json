@@ -1,0 +1,60 @@
+{
+    "id":1,
+    "app_name":"a100",
+    "ip":"10.192.32.114",
+    "is_enable":"1",
+    "databases":[
+	               
+	                 {
+	                	 "name":"DBMT70",
+		                 "ip":"localhost",
+		                 "alias":"DBMT70",
+		                 "dbtype":"sqlserver",
+		                 "port":"*",
+		                 "username":"DBMT70_ADM",
+		                 "password":"mtaADM12345*",  
+		                 "jdbc_url":"jdbc:sqlserver://10.192.32.114;DatabaseName=DBMT70",
+		                 "jdbc_driver":"com.microsoft.sqlserver.jdbc.SQLServerDriver"
+	                 },
+			  {
+	                	 "name":"CC",
+		                 "ip":"localhost",
+		                 "alias":"CC",
+		                 "dbtype":"sqlserver",
+		                 "port":"*",
+		                 "username":"DBMT70_ADM",
+		                 "password":"mtaADM12345*",  
+		                 "jdbc_url":"jdbc:sqlserver://10.192.32.114;DatabaseName=CC",
+		                 "jdbc_driver":"com.microsoft.sqlserver.jdbc.SQLServerDriver"
+	                 }
+	                 
+	                 
+	        ],
+    "resources":[
+                 {
+	            	 "name":"user",
+	            	 "tables":[
+	            	           {
+	            	        	   "name":"mta_user",
+	            	        	   "belong_db":"DBMT70"
+	            	           }
+
+	            	        ],
+	            	 "is_cache":"0"
+	            
+	         },
+		 {
+	            	 "name":"test1",
+	            	 "tables":[
+	            	           {
+	            	        	   "name":"test1",
+	            	        	   "belong_db":"DBMT70"
+	            	           }
+
+	            	        ],
+	            	 "is_cache":"1"
+	            
+	         }
+	             
+	    ]
+}

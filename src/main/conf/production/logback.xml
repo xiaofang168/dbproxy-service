@@ -1,0 +1,36 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+       <encoder>
+			<pattern>
+				%date{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{1}:%L - %msg%n
+			</pattern>
+		</encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs\service_log.html</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>logs\service_log.%d{yyyy-MM-dd}.%i.html</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.html.HTMLLayout">
+                <pattern>%date{yyyy-MM-dd HH:mm:ss}%thread%level%logger%line%msg</pattern>
+            </layout>           
+        </encoder>
+    </appender> 
+
+	<logger name="com.hikvision.dbproxy.services" level="DEBUG"/>
+	<root level="INFO">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />  
+    </root>
+</configuration>
